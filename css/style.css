@@ -193,6 +193,10 @@
     background: #000;
 }
 
+.project .container .center {
+    margin-left: 250px;
+}
+
 .project h1 {
     margin-left: 150px;
     font-weight: 500;
@@ -495,6 +499,10 @@ footer .navigate ul li a:hover {
     .project h1 {
         margin-left: 0;
         text-align: center;
+    }
+
+    .project .container .center {
+        margin-left: 0;
     }
 
     .project .card {
