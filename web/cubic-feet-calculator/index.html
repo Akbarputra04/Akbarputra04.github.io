@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <style>
+        .accordion-button:focus,
+        .form-control:focus {
+            box-shadow: none;
+        }
+    </style>
+
+    <title>Cubic Feet Calculator</title>
+</head>
+
+<body>
+
+    <div class="container p-5">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="text-center mb-4">
+                    <h1>CUBIC FEET CALCULATOR</h1>
+                    <p>Use the calculator below to add up the items you will be moving and get a full cubic feet and
+                        weight estimate.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="btn-group mb-4" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="sort" value="1" id="roomSort" onclick="changeSortMethod()" autocomplete="off" checked>
+                        <label class="btn btn-outline-info" for="roomSort">SORT BY ROOM</label>
+                      
+                        <input type="radio" class="btn-check" name="sort" value="2" id="alphabersort" onclick="changeSortMethod()" autocomplete="off">
+                        <label class="btn btn-outline-info" for="alphabersort">SORT BY ALPHABET</label>
+                    </div>
+                </div>
+
+                <div class="card card-body border-0 shadow p-0">
+                    <div class="accordion accordion-flush" id="itemsList">
+                        <!-- content from javascript -->
+                    </div>
+                    <div class="row gap-3 p-4">
+                        <div class="col p-3 bg-light">
+                            <h6>Cubic Feet Total:</h6>
+                            <h4 class="m-0" id="cubicFeetTotal">0</h4>
+                        </div>
+                        <div class="col p-3 bg-light">
+                            <h6>Total Weight:</h6>
+                            <h4 class="m-0" id="totalWeight">0</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+
+    <script>
+        const dummyByRoom = [
+            {
+                id: "r1",
+                room: "living room",
+                data: [
+                    { article: "Bar, Portable", cubic_feet: "15" },
+                    { article: "Bench, Piano", cubic_feet: "5" },
+                    { article: "Bookcase", cubic_feet: "20" },
+                    { article: "Bookshelves, Sect", cubic_feet: "5" },
+                    { article: "Cabinet, Curio", cubic_feet: "10" },
+                ],
+            },
+            {
+                id: "r2",
+                room: "bedroom",
+                data: [
+                    { article: "Bed Inc. Sp/Matt", cubic_feet: "40" },
+                    { article: "Bed Rollaway", cubic_feet: "20" },
+                    { article: "Bed, Single", cubic_feet: "40" },
+                    { article: "Bed, Std/Dbl.", cubic_feet: "60" },
+                    { article: "Bed, Queen", cubic_feet: "65" },
+                    { article: "Bed, King", cubic_feet: "70" },
+                    { article: "Bed, Bunk (Set 2)", cubic_feet: "70" },
+                ],
+            },
+            {
+                id: "r3",
+                room: "nursery",
+                data: [
+                    { article: "Bassinette", cubic_feet: "5" },
+                    { article: "Bed, Youth", cubic_feet: "30" },
+                    { article: "Chair, Child's", cubic_feet: "3" },
+                    { article: "Chair, High", cubic_feet: "5" },
+                ],
+            },
+        ];
+        
+        const dummyByAlphabet = [
+            {},
+            {article: "Air Cond./Wind. Sm", cubic_feet: "15"},
+            {article: "Air Cond./Wind. Lg", cubic_feet: "20"},
+            {article: "Baby Carriage", cubic_feet: "4"},
+            {article: "Barbells", cubic_feet: "5"},
+            {article: "Bar, Portable", cubic_feet: "15"},
+            {article: "Basket (Clothes)", cubic_feet: "5"},
+            {article: "Bassinette", cubic_feet: "5"},
+            {article: "BBQ Grill, Camping", cubic_feet: "2"},
+            {article: "Cabinet, Curio", cubic_feet: "10"},
+            {article: "Cabinet, Corner", cubic_feet: "20"},
+            {article: "Card Table", cubic_feet: "2"},
+            {article: "Chair, Straight	", cubic_feet: "5"},
+            {article: "Chair, Arm", cubic_feet: "10"},
+            {article: "Chair, Rocker", cubic_feet: "12"}
+        ]
+
+        let qtyElm = []
+
+        const calculate = (i, e) => {
+            let qtyVal = parseInt(i.value)
+            const cubicFeet = parseInt(e)
+
+            const qty_cftField = i.parentElement.nextElementSibling.nextElementSibling
+
+                let qty_cft = 0
+                let total_cft = 0
+
+                if (isNaN(qtyVal) || qtyVal == "") {
+                    qtyVal = 0
+                }
+
+                qty_cft = cubicFeet * qtyVal
+                
+                qty_cftField.innerText = qty_cft
+
+                qtyElm.forEach(qty1 => {
+                    const subTotal = parseInt(qty1.parentElement.nextElementSibling.nextElementSibling.innerText)
+
+                    if (!isNaN(subTotal)) {
+                        total_cft += subTotal
+                    }
+                })
+
+                document.querySelector('#cubicFeetTotal').innerText = total_cft
+                document.querySelector('#totalWeight').innerText = total_cft * 7
+        }
+
+        const changeSortMethod = (e) => {
+            const sortType = document.querySelector('input[name="sort"]:checked').value
+            
+            if (sortType == 1) {
+                showDataByRoom()
+            } else {
+                showDataByAlphabet()
+            }
+
+            document.querySelector('#cubicFeetTotal').innerText = 0
+            document.querySelector('#totalWeight').innerText = 0
+        }
+
+        const showDataByAlphabet = () => {
+            let accordionItem = ""
+
+            let data = dummyByAlphabet.reduce((r, e) => {
+                let alphabet = e.article[0];
+                if(!r[alphabet]) r[alphabet] = {alphabet, data: [e]}
+                else r[alphabet].data.push(e);
+                return r;
+            })
+            let groupedData = Object.values(data)
+
+            for (i = 0; i < 26; i++) {
+                const alpha = (i+10).toString(36)
+                
+                groupedData.forEach(d => {
+                    let accordionBodyList = ""
+
+                    let dd = d.alphabet == alpha.toUpperCase()
+                    
+                    if (dd) {
+                        d.data.forEach(d => {
+                            accordionBodyList += `<tr>
+                                                <td valign="middle">${d.article}</td>
+                                                <td valign="middle" class="d-flex justify-content-center"><input type="text" class="form-control form-control-sm text-center qty"style="width: 50px;" onkeyup="calculate(this, ${d.cubic_feet})"></td>
+                                                <td valign="middle" class="text-center">${d.cubic_feet}</td>
+                                                <td valign="middle" class="text-center">0</td>
+                                            </tr>`
+                        });
+            
+                        accordionItem += `<div class="accordion-item">
+                            <h2 class="accordion-header" id="${d.alphabet}">
+                                <button class="accordion-button ${i != 0 && 'collapsed'} rounded bg-info text-uppercase" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#${d.alphabet}1" aria-expanded="false"
+                                    aria-controls="${d.alphabet}">
+                                    ${d.alphabet}
+                                </button>
+                            </h2>
+                            <div id="${d.alphabet}1" class="accordion-collapse collapse ${i == 0 && 'show'}" aria-labelledby="${d.alphabet}"
+                                data-bs-parent="#itemsList">
+                                <div class="accordion-body p-0">
+                                    <table class="table m-0">
+                                        <thead>
+                                            <tr>
+                                                <td>Article</td>
+                                                <td class="text-center">Quantity</td>
+                                                <td class="text-center">Cubic Feet</td>
+                                                <td class="text-center">QTY X CFT</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${accordionBodyList}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>`
+                    }
+
+                });
+
+                document.getElementById('itemsList').innerHTML = accordionItem
+                
+                
+                qtyElm = document.querySelectorAll('.qty')
+            }
+        }
+        
+        const showDataByRoom = () => {
+            let accordionItem = ""
+    
+            dummyByRoom.forEach((item, i) => {
+                let accordionBodyList = ""
+    
+                item.data.forEach(d => {
+                    accordionBodyList += `<tr>
+                                        <td valign="middle">${d.article}</td>
+                                        <td valign="middle" class="d-flex justify-content-center"><input type="text" class="form-control form-control-sm text-center qty"style="width: 50px;" onkeyup="calculate(this, ${d.cubic_feet})"></td>
+                                        <td valign="middle" class="text-center">${d.cubic_feet}</td>
+                                        <td valign="middle" class="text-center">0</td>
+                                    </tr>`
+                });
+    
+                accordionItem += `<div class="accordion-item">
+                    <h2 class="accordion-header" id="${item.room}">
+                        <button class="accordion-button ${i != 0 && 'collapsed'} rounded bg-info text-uppercase" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#${item.id}" aria-expanded="false"
+                            aria-controls="${item.room}">
+                            ${item.room}
+                        </button>
+                    </h2>
+                    <div id="${item.id}" class="accordion-collapse collapse ${i == 0 && 'show'}" aria-labelledby="${item.room}"
+                        data-bs-parent="#itemsList">
+                        <div class="accordion-body p-0">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <td>Article</td>
+                                        <td class="text-center">Quantity</td>
+                                        <td class="text-center">Cubic Feet</td>
+                                        <td class="text-center">QTY X CFT</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${accordionBodyList}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>`
+            });
+    
+            document.getElementById('itemsList').innerHTML = accordionItem
+            
+            qtyElm = document.querySelectorAll('.qty')
+        }
+
+        // initial show data
+        showDataByRoom()
+
+        var myCollapse = document.getElementById('itemslist')
+        var bsCollapse = new bootstrap.Collapse(myCollapse, {
+            toggle: false
+        })
+    </script>
+
+</body>
+
+</html>
