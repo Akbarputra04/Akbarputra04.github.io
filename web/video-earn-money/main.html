@@ -23,7 +23,14 @@
                 <source src="video/explore.webm" type="video/webm">
             </video>
 
-            <h4>Your Points : <span id="point"></span> USD <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#claimForm">Claim</a></h4>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h4>Your Points : <span id="point"></span> USD <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#claimForm">Claim</a></h4>
+                </div>
+                <div>
+                    <h4>Your Wallet Balance : <span id="wallet"></span> USD</h4>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -72,10 +79,13 @@
 
     <script>
         let points = localStorage.getItem('points')
+        let walletBalance = localStorage.getItem('walletBalance');
+        const wallet = document.querySelector('#wallet');
         const pointTOClaim = document.querySelector('#pointTOClaim');
         const pointElm = document.querySelector('#point');
         const claimBtn = document.querySelector('#claimBtn');
-        const claimPopup = document.getElementById('claimForm')
+        const claimModal = document.getElementById('claimForm')
+        const claimPopup = new bootstrap.Modal(claimModal)
         const nextBtn = document.querySelector('#nextBtn');
         const adPopup = new bootstrap.Modal(document.getElementById('ad'))
         const video = document.getElementById('video')
@@ -83,6 +93,7 @@
         let markers = [];
 
         pointElm.innerText = points
+        wallet.innerText = walletBalance
 
         video.addEventListener('loadedmetadata', (e) => {
             duration = e.target.duration
@@ -105,6 +116,10 @@
             }
         })
 
+        video.addEventListener('ended', () => {
+            claimPopup.show()
+        })
+
         nextBtn.addEventListener('click', () => {
             video.play()
             adPopup.hide()
@@ -123,6 +138,7 @@
                 const claimTotal = points > 3 ? 3 : points
                 localStorage.setItem('points', parseInt(points) - parseInt(claimTotal))
                 localStorage.setItem('todayClaim', claimTotal);
+                localStorage.setItem('walletBalance', parseInt(walletBalance) + parseInt(claimTotal));
                 alert('points successfully claimed')
                 document.location.href = 'main.html'
             }
@@ -151,7 +167,7 @@
             document.location.href = 'index.html'
         }
 
-        claimPopup.addEventListener('show.bs.modal', function (event) {
+        claimModal.addEventListener('show.bs.modal', function (event) {
             pointTOClaim.innerText = points > 3 ? 3 : points
         })
 
