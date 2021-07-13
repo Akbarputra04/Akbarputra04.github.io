@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project show off</title>
+</head>
+
+<body>
+
+    <div id="map" style="width: 100%; height: 500px;"></div>
+
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVE36TXcMXvxCqv3K8ry-OM_O6r3fuFR4&callback=initMap"></script>
+
+    <script>
+        const australian = { lat: -25.363, lng: 131.044 }
+
+        const projectData = [
+            {
+                title: 'The Project',
+                desc: 'Project description',
+                location: { lat: -25.363, lng: 131.044 }
+            },
+            {
+                title: 'The Project 2',
+                desc: 'Project 2 description',
+                location: { lat: -21.363, lng: 130.044 }
+            }
+        ]
+
+        const setMarkers = (map, data) => {
+            projectData.forEach(project => {
+                const marker = new google.maps.Marker({
+                    position: project.location,
+                    map,
+                    title: project.title,
+                });
+
+                const content = `
+                <div>
+                    <h1>${project.title}</h1>
+                    <p>${project.desc}</p>
+                </div>`
+
+                const infowindow = new google.maps.InfoWindow()
+
+                google.maps.event.addListener(marker, 'click', (function (marker, content, infowindow) {
+                    return function () {
+                        infowindow.setContent(content);
+                        infowindow.open(map, marker);
+                    };
+                })(marker, content, infowindow));
+            });
+        }
+
+        function initMap() {
+
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: australian.lat, lng: australian.lng },
+                zoom: 4,
+            });
+
+            setMarkers(map, projectData)
+
+        }
+    </script>
+</body>
+
+</html>
