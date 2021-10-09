@@ -1,25 +1,30 @@
 {
   "files": {
-    "main.css": "/static/css/main.257f03be.chunk.css",
-    "main.js": "/static/js/main.8cd62b01.chunk.js",
-    "main.js.map": "/static/js/main.8cd62b01.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.38eb6f4c.js",
-    "runtime-main.js.map": "/static/js/runtime-main.38eb6f4c.js.map",
-    "static/js/2.0f223164.chunk.js": "/static/js/2.0f223164.chunk.js",
-    "static/js/2.0f223164.chunk.js.map": "/static/js/2.0f223164.chunk.js.map",
-    "static/js/3.3c0eb9f1.chunk.js": "/static/js/3.3c0eb9f1.chunk.js",
-    "static/js/3.3c0eb9f1.chunk.js.map": "/static/js/3.3c0eb9f1.chunk.js.map",
+    "main.css": "/static/css/main.4577df3b.chunk.css",
+    "main.js": "/static/js/main.75ba04ab.chunk.js",
+    "main.js.map": "/static/js/main.75ba04ab.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.459c0f36.js",
+    "runtime-main.js.map": "/static/js/runtime-main.459c0f36.js.map",
+    "static/js/2.e52ff4ec.chunk.js": "/static/js/2.e52ff4ec.chunk.js",
+    "static/js/2.e52ff4ec.chunk.js.map": "/static/js/2.e52ff4ec.chunk.js.map",
+    "static/js/3.07ace3fe.chunk.js": "/static/js/3.07ace3fe.chunk.js",
+    "static/js/3.07ace3fe.chunk.js.map": "/static/js/3.07ace3fe.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.257f03be.chunk.css.map": "/static/css/main.257f03be.chunk.css.map",
-    "static/js/2.0f223164.chunk.js.LICENSE.txt": "/static/js/2.0f223164.chunk.js.LICENSE.txt",
+    "static/css/main.4577df3b.chunk.css.map": "/static/css/main.4577df3b.chunk.css.map",
+    "static/js/2.e52ff4ec.chunk.js.LICENSE.txt": "/static/js/2.e52ff4ec.chunk.js.LICENSE.txt",
     "static/media/heroshape.97539926.png": "/static/media/heroshape.97539926.png",
+    "static/media/menghitung angka.6e65d081.png": "/static/media/menghitung angka.6e65d081.png",
     "static/media/mypict.52b30ba2.jpg": "/static/media/mypict.52b30ba2.jpg",
-    "static/media/project.ad367def.jpg": "/static/media/project.ad367def.jpg"
+    "static/media/sipm.1b20fc16.png": "/static/media/sipm.1b20fc16.png",
+    "static/media/sportscore.3f8ae2c3.png": "/static/media/sportscore.3f8ae2c3.png",
+    "static/media/todoes.4b33d184.jpg": "/static/media/todoes.4b33d184.jpg",
+    "static/media/web sipm.cd98f694.png": "/static/media/web sipm.cd98f694.png",
+    "static/media/website pm.baa5d649.png": "/static/media/website pm.baa5d649.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.38eb6f4c.js",
-    "static/js/2.0f223164.chunk.js",
-    "static/css/main.257f03be.chunk.css",
-    "static/js/main.8cd62b01.chunk.js"
+    "static/js/runtime-main.459c0f36.js",
+    "static/js/2.e52ff4ec.chunk.js",
+    "static/css/main.4577df3b.chunk.css",
+    "static/js/main.75ba04ab.chunk.js"
   ]
 }
