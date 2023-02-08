@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.474a03a7.chunk.css",
-    "main.js": "/static/js/main.05f34956.chunk.js",
-    "main.js.map": "/static/js/main.05f34956.chunk.js.map",
+    "main.js": "/static/js/main.7eb133da.chunk.js",
+    "main.js.map": "/static/js/main.7eb133da.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.459c0f36.js",
     "runtime-main.js.map": "/static/js/runtime-main.459c0f36.js.map",
     "static/js/2.48a469c8.chunk.js": "/static/js/2.48a469c8.chunk.js",
@@ -15,6 +15,7 @@
     "static/media/akbarputra.b001d155.pdf": "/static/media/akbarputra.b001d155.pdf",
     "static/media/appointment widget.adeb6339.png": "/static/media/appointment widget.adeb6339.png",
     "static/media/grocery app.fbe16e52.png": "/static/media/grocery app.fbe16e52.png",
+    "static/media/halalinkamu.709412b3.png": "/static/media/halalinkamu.709412b3.png",
     "static/media/heroshape.97539926.png": "/static/media/heroshape.97539926.png",
     "static/media/logistic landing.90bc59b5.png": "/static/media/logistic landing.90bc59b5.png",
     "static/media/menghitung angka.6e65d081.png": "/static/media/menghitung angka.6e65d081.png",
@@ -23,6 +24,7 @@
     "static/media/product landing page.393449e1.png": "/static/media/product landing page.393449e1.png",
     "static/media/sipm.1b20fc16.png": "/static/media/sipm.1b20fc16.png",
     "static/media/sportscore.3f8ae2c3.png": "/static/media/sportscore.3f8ae2c3.png",
+    "static/media/srirejeki.f8220f02.png": "/static/media/srirejeki.f8220f02.png",
     "static/media/todoes.4b33d184.jpg": "/static/media/todoes.4b33d184.jpg",
     "static/media/web sipm.cd98f694.png": "/static/media/web sipm.cd98f694.png",
     "static/media/website pm.baa5d649.png": "/static/media/website pm.baa5d649.png"
@@ -31,6 +33,6 @@
     "static/js/runtime-main.459c0f36.js",
     "static/js/2.48a469c8.chunk.js",
     "static/css/main.474a03a7.chunk.css",
-    "static/js/main.05f34956.chunk.js"
+    "static/js/main.7eb133da.chunk.js"
   ]
 }
